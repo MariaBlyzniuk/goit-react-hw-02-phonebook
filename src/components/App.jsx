@@ -16,10 +16,10 @@ state = {
   filter: ''
   }
   
-  handleAddContact = contact => {
-    const addContact = { id: nanoid(4), ...contact }
-  
-    if (addContact) {
+  handleAddContact = (contact) => {
+    const addContact = { id: nanoid(3), ...contact }
+    if (this.state.contacts.find(
+        contact => contact.name === addContact.name) ){
       Notiflix.Confirm.show(`${contact.name} is already in contacts.`);
     } else {
       this.setState(
@@ -27,6 +27,7 @@ state = {
       () => console.log(this.state)
     )
     }
+    
   };
   
   handleDeleteContact = id => {
